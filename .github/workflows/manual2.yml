@@ -29,8 +29,8 @@ jobs:
         run: npm install --only=prod
         working-directory: .
       - name: fetch
-        run: node index.js
-        working-directory: .
+        #run: node index.js
+        #working-directory: .
         # for github app auth
         env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
