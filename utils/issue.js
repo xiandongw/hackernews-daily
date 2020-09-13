@@ -1,24 +1,10 @@
-const { Octokit } = require("@octokit/core");
-const { createAppAuth } = require("@octokit/auth-app");
+const eventPayload = require(process.env.GITHUB_EVENT_PATH);
+const { Octokit } = require("@octokit/action");
+// auth with github 
+//https://dev.to/gr2m/github-api-authentication-github-actions-la3 
 
-let secrets = {};
 
-try {
-  secrets = require('../secret.js');
-} catch (error) {
-  console.log('no secret json, on github action')
-}
-
-const octokit = new Octokit({
-  authStrategy: createAppAuth,
-  auth: {
-    id: 75833,
-    installationId: 11101003,
-    clientId: "Iv1.8d2f7d117f535668",
-    clientSecret: process.env.clientSecret ? process.env.clientSecret : secrets.clientSecret,
-    privateKey: process.env.privateKey ? process.env.privateKey : secrets.privateKey,
-  },
-});
+const octokit = new Octokit();
 
 const open = async ({owner, repo, title, body}) => {
   try {    
