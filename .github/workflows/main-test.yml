@@ -20,9 +20,8 @@ jobs:
       run: node index.js
       working-directory: .
       # for github app auth
-      with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         clientSecret: ${{ secrets.clientSecret }}
         privateKey: ${{ secrets.privateKey }}
         
